@@ -2,11 +2,17 @@ import { Schema } from "mongoose";
 
 export var PollSchema: Schema = new Schema({
 	createdAt: Date,
-	question: String,
-	answers:[String],
+	question: {
+		type: String,
+		required: true
+	},
+	answers: { 
+		type: [String],
+		required: true
+	},
 	votes: [{
 		ip:String,
-		answers_id: Number
+		answer_id: Number
 	}]
 
 });

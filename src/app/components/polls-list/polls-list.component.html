@@ -1,0 +1,33 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-4" *ngFor="let poll of polls | async">
+      <a class="poll-card" [routerLink]="['polls', poll.id]">
+        <div class="poll-card__section poll-card__section--top">
+          <h2 class="poll-card__title">{{poll.question}}</h2>
+        </div>
+        <div class="poll-card__section poll-card__section--middle">
+          <ul class="poll-card__answers">
+            <li *ngFor="let answer of poll.answers">
+              {{answer}}
+            </li>
+          </ul>
+        </div>
+        <div class="poll-card__section poll-card__section--bottom">
+          <div class="section__col">
+            <p>
+              {{poll.allVotesCount}} vote{{(poll.allVotesCount === 1)?'': 's'}}
+            </p>
+          </div>
+          <div class="section__col">
+            <p>
+              {{poll.createdAt | date:'shortDate'}}
+            </p>
+          </div>
+        </div>
+        
+      </a>
+    </div>
+  </div>
+</div>
+

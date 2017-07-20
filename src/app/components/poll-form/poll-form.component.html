@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Add new poll</h2>
+    <form (ngSubmit)="onSubmit()" #pollForm="ngForm" class="poll-card poll-card--form">
+      <div class="poll-card__section poll-card__section--top">
+        <label for="question" class="sr-only">Question</label>
+        <input type="text" class="poll-card__title poll-card__input" id="question" 
+          [(ngModel)]="model.question" name="question" placeholder="Type your question here"
+          required #question="ngModel">
+      </div>
+ 
+      <div class="poll-card__section poll-card__section--middle" >
+        <ul class="poll-card__answers" >
+          <li *ngFor="let answer of answers; let i = index; trackBy: pollAnswersTrack">
+            <label [for]="'answer'+i" class="sr-only">Answer {{i}}</label>
+            <input type="text" class="poll-card__input" [id]="'answer'+i"  [name]="'answer'+i"  [required]="i !== answers.length - 1"
+              (keyup)="answerKeyUp(i)" [(ngModel)]="answers[i]" [placeholder]="'Type answer '+ i">
+          </li>
+        </ul>
+      </div>
+ 
+      <div class="poll-card__section poll-card__section--bottom">
+        <button type="submit" class="poll-card__button poll-card__button--submit" [disabled]="!pollForm.form.valid">Add poll</button>
+      </div>
+ 
+    </form>
+</div>

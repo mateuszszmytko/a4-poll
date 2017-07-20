@@ -1,0 +1,122 @@
+@import './_variables';
+
+.poll-card {
+	position: relative;
+	display: block;
+	background: $main_clr;
+	min-height: 300px;
+	color: white;
+	max-width: 400px;
+	margin: 20px auto;
+	
+	box-shadow: 3px 3px 8px rgba(0, 0, 0, .2);
+	&:hover {
+		text-decoration: none;
+	}
+
+
+	&__title {
+		color: white;
+		font-weight: 300;
+		text-decoration: none;
+		font-size: 18px;
+		line-height: 24px;
+		margin: 0;
+	}
+	&__answers {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		li {
+			position: relative;
+			margin: 5px 0;
+			font-size: 14px;
+			line-height: 32px;
+			font-weight: 300;
+		}
+
+	}
+	&__input {
+		background: none;
+		width: 100%;
+		border: 0;
+
+		outline: none;
+	}
+	
+	&:hover {
+		color: white;
+	}
+	
+}
+
+.poll-card__button {
+	border: 0;
+	outline: 0;
+	color: white;
+	background: none;
+	&--submit {
+		padding: 10px 15px;
+	}
+	
+}
+
+.poll-card__radio {
+	position: absolute;
+	left: -5000px;
+	
+
+	& + label {
+		font-weight: 300;
+		font-size: 14px;
+		margin: 0 0 0 25px;
+		&:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
+			width: 14px;
+			height: 14px;
+			font-size: 12px;
+			line-height: 14px;
+			padding: 0 2px;
+			border: 1px solid white;
+		}
+	}
+
+	&:checked + label {
+		&:after {
+			content: '✔';
+		}
+	}
+}
+
+.poll-card__section {
+	padding: 20px;
+	&--top {
+		background: $darken_clr;
+	}
+	&--bottom {
+		padding: 10px 0;
+		position: absolute;
+		background: $darken_clr;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		text-align: center;
+		& > div {
+			float: left;
+			width: 50%;
+		}
+		p {
+			
+			margin: 0;
+		}
+	}
+	&--middle {
+		padding: 5px 20px 80px;
+		
+	} 
+}
+

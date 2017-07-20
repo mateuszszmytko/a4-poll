@@ -45,39 +45,26 @@ class App {
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
     this.express.use(function(req, res, next) {
-
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
         next();
     });
+    this.express.use(express.static(path.join(__dirname, '../dist')));
   }
 
   // Configure API endpoints.
   private routes(): void {
     let router = express.Router();
+    
+    this.express.use('/api', router);
+    router.use('/polls', PollRouter);
 
-    let a = new User({"email":"rak@02.pl", "firstName":"rak", "lastName":"rakk"});
-    console.log(a.fullName());
-
-    router.get('/', async (req:Request, res:Response, next:NextFunction) => {
-      const rak = await User.findOne();
- 
-      res.json({
-        message: 'Hello World!',
-        data: rak,
-        data2: a
-      });
+    this.express.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../dist/index.html'));
     });
 
-    router.post('/', (req, res, next) => {
-      res.json({
-        message: 'Hello World!'
-      });
-    });
-
-
-    this.express.use('/polls', PollRouter);
+    
   }
 }
 

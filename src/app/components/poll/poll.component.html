@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="poll-card">
+        <div class="poll-card__section poll-card__section--top">
+          <h2 class="poll-card__title">{{poll.question}}</h2>
+          <p *ngIf="userVote >= 0">You voted {{poll.answers[userVote]}}</p>
+        </div>
+        <div class="poll-card__section poll-card__section--middle">
+          <ul class="poll-card__answers">
+            <li *ngFor="let answer of poll.answers; let i = index">
+              
+              <input type="radio" [disabled]="userVote >= 0" 
+                    (click)="selectedVote = i" name="answer" [id]="'answer-'+i"
+                    [value]="i" [checked]="userVote === i" class="poll-card__radio">
+              <label [for]="'answer-'+i">{{answer}}</label> 
+            </li>
+          </ul>
+          
+        </div>
+        <div class="poll-card__section poll-card__section--bottom">
+          <div class="section__col">
+             <div *ngIf="userVote === -1 && selectedVote !== -1;then voteContent else votesCountContent"></div>
+
+              <ng-template #voteContent>
+                <button *ngIf="userVote === -1 && selectedVote !== -1"
+                class="poll-card__button" (click)="addVote()">Vote</button>  
+              </ng-template>
+              <ng-template #votesCountContent>
+                <p>
+                  {{poll.allVotesCount}} vote{{(poll.allVotesCount === 1)?'': 's'}}
+                </p>
+              </ng-template>
+            
+            
+          </div>
+          <div class="section__col">
+            <p>
+              {{poll.createdAt | date:'shortDate'}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <poll-chart [pollStream]="pollStream"></poll-chart>
+    </div>
+  </div>
+
+  <button (click)="removePoll()"> Remove </button>
+     
+
+ 
+</div>
