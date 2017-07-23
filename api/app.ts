@@ -39,7 +39,7 @@ class App {
 
   }
 
-  // Configure Express middleware.
+
   private middleware(): void {
     this.express.use(logger('dev'));
     this.express.use(bodyParser.json());
@@ -53,7 +53,7 @@ class App {
     this.express.use(express.static(path.join(__dirname, '../dist')));
   }
 
-  // Configure API endpoints.
+
   private routes(): void {
     let router = express.Router();
     
