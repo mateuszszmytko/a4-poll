@@ -4,13 +4,14 @@
 	position: relative;
 	display: block;
 	background: $main_clr;
-	min-height: 300px;
+	min-height: 350px;
 	color: white;
 	max-width: 400px;
 	margin: 20px auto;
 	
 	box-shadow: 3px 3px 8px rgba(0, 0, 0, .2);
-	&:hover {
+	&:hover, &:focus, &:active {
+		color: white;
 		text-decoration: none;
 	}
 
@@ -115,7 +116,7 @@
 		}
 	}
 	&--middle {
-		padding: 5px 20px 80px;
+		padding: 5px 20px 40px;
 		
 	} 
 }
