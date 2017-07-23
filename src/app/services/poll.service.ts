@@ -17,7 +17,7 @@ import { IPoll, IVote } from '../../../api/interfaces/poll.interface';
 
 @Injectable()
 export class PollService {
-  private apiUrl = '/api/polls/';
+  private apiUrl = 'http://localhost:3000/api/polls/';
 
   constructor(private _http:Http, private _ip:IpService) { }
 

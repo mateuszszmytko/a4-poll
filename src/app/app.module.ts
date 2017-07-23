@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './modules/app-routing.module';
 
 
@@ -28,11 +29,13 @@ import { IpService } from './services/ip.service';
     PagenotfoundComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpModule,
     FormsModule,
     ChartsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [PollService, IpService],
   bootstrap: [AppComponent]
